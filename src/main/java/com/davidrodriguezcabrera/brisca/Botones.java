@@ -5,6 +5,8 @@
  */
 package com.davidrodriguezcabrera.brisca;
 
+import java.net.URISyntaxException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 
 /**
  *
@@ -19,6 +22,7 @@ import javafx.scene.image.ImageView;
  */
 public class Botones {
    int contadorPosCarta;
+   AudioClip musicaRobarCarta;
 //Image imageOk = new Image(getClass().getResourceAsStream("baraja.png"));
 Button button = new Button("Robar");
     //Button button = new Button("Robar", new ImageView(imageOk));
@@ -38,10 +42,23 @@ Button button = new Button("Robar");
 button.setOnAction (new EventHandler <ActionEvent> () { 
     @Override 
     public void handle (ActionEvent e) {
+        
         System.out.println("holaMundo");
        
         if (mazo.cartasJ1[cartasJ1View.colClic] == null && mazo.posCartaACoger<20){
             
+            //SONIDO TIRA CARTA
+        URL urlmusicaFondo = getClass().getResource("/audio/cuckoo.wav");
+        if(urlmusicaFondo != null) {
+            try {
+                musicaRobarCarta = new AudioClip(urlmusicaFondo.toURI().toString());
+                musicaRobarCarta.play();
+            } catch (URISyntaxException ex) {
+            }            
+        } else {
+        System.out.println("No se ha encontrado el archivo de audio");
+        }
+        
             cartasJ1View.numCartasPantalla = mazo.cogerCarta();
             System.out.println(mazo.posCartaACoger);
         mazo.cartasJ1[cartasJ1View.colClic] = cartasJ1View.numCartasPantalla;
@@ -55,16 +72,17 @@ button.setOnAction (new EventHandler <ActionEvent> () {
             System.out.println(contadorPosCarta);
         //mazo.cogerCarta();
         }else{
-            System.out.println("No quedan cartas en la baraja");
+            System.out.println("No quedan cartas en la baraja o no puedes robar mas cartas");
         }
         
-        //System.out.println(cartasJ1View.colClic);
-         //Label labelbotton = new Label("Robar");
-        //labelbotton.setText ("Robar"); 
     }
 
 });
+
+        
+}
+
+    
 }
 
 
-}

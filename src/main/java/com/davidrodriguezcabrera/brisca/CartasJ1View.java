@@ -30,7 +30,9 @@ public class CartasJ1View extends GridPane{
     Label labelJ1Vacio = new Label("Vacio");
     Carta vacio = new Carta(0, "KPASA", 0);
     HBox hboxCartaPersonajeJugador;
-    
+    int colClic;
+    int contador = 7;
+    int calcularContador = 1;
     public CartasJ1View(Baraja mazo) {  
         this.mazo = mazo;
         //this.mazo.jugador1();
@@ -46,16 +48,16 @@ public class CartasJ1View extends GridPane{
         labelJ1.setPrefWidth(TAM_X);
         labelJ1Vacio.setPrefWidth(TAM_X);
         this.add(labelJ1, x, 0);
-            
+        
        }
         this.mouseController();
         //this.mostrarJ1();
     }
-    private void mouseController() {
+    public void mouseController() {
         
         this.setOnMouseClicked((MouseEvent mouseEvent) -> {
             System.out.println("X: " + mouseEvent.getX() + ", Y: "+ mouseEvent.getY() );
-            int colClic = (int)(mouseEvent.getX() / TAM_X);
+            colClic = (int)(mouseEvent.getX() / TAM_X);
             System.out.println("Col: " + colClic);
             //System.out.println(mazo.posCartaACogerJ1);
             //Carta num = mazo.cartasJ1[colClic];
@@ -64,6 +66,9 @@ public class CartasJ1View extends GridPane{
             //this.getChildren().get(colClic).setVisible(false);
             this.getChildren().remove(colClic);
             mazo.cartasJ1[colClic] = null;
+            
+            contador = contador-calcularContador;
+            System.out.println(contador);
             //System.arraycopy(this.mazo.cartasJ1,  colClic, this.mazo.cartasJ1, colClic, 1);
             //mazo.cartasJ1.remove(colClic);
             //System.arraycopy(arrayObjetos, i + 1, objeto,i, arrayObjetos.length - 1 - i);

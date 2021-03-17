@@ -64,7 +64,7 @@ BorderPane borderPane = new BorderPane();
         CartasJ2View cartasJ2View = new CartasJ2View(mazo);
         paneRoot.setTop(cartasJ2View);
         
-        Botones botones = new Botones(mazo);
+        Botones botones = new Botones(mazo, cartasJ1View);
         paneRoot.setRight(botones.button);
         
         //mazo.jugador2();

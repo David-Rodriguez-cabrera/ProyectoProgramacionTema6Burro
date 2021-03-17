@@ -1,5 +1,7 @@
 package com.davidrodriguezcabrera.brisca;
 
+import java.net.URISyntaxException;
+import java.net.URL;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Insets;
@@ -14,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 /**
@@ -22,6 +25,7 @@ import javafx.scene.paint.Color;
 public class App extends Application {
 BorderPane paneRoot = new BorderPane();
 BorderPane borderPane = new BorderPane();
+AudioClip musicaFondo;
 //HBox pane1 = new HBox();
 //HBox pane2 = new HBox();
 //StackPane pane3 = new StackPane();
@@ -43,10 +47,10 @@ BorderPane borderPane = new BorderPane();
         
        paneRoot.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        this.rellenarPaneles();
+        //this.rellenarPaneles();
         
         stage.setTitle("Burro");
-        rellenarBorderPane();
+        //rellenarBorderPane();
        
         Baraja mazo = new Baraja();
         //GridPane barajaGridPane = new GridPane();
@@ -75,7 +79,17 @@ BorderPane borderPane = new BorderPane();
         
         
         
-        
+        //SONIDO FONDO JUEGO
+        URL urlmusicaFondo = getClass().getResource("/audio/MusicaFondo.mp3");
+        if(urlmusicaFondo != null) {
+            try {
+                musicaFondo = new AudioClip(urlmusicaFondo.toURI().toString());
+                musicaFondo.play();
+            } catch (URISyntaxException ex) {
+            }            
+        } else {
+        System.out.println("No se ha encontrado el archivo de audio");
+        }
         
         //paneRoot.setCenter(fondoView);
     }

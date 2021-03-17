@@ -5,6 +5,8 @@
  */
 package com.davidrodriguezcabrera.brisca;
 
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,6 +14,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -27,12 +30,11 @@ public class CartasJ1View extends GridPane{
     String strNumJ1;
     Label labelJ1 = new Label();
     Carta numCartasPantalla;
-    Label labelJ1Vacio = new Label("Vacio");
-    Carta vacio = new Carta(0, "KPASA", 0);
-    HBox hboxCartaPersonajeJugador;
+    //HBox hboxCartaPersonajeJugador;
     int colClic;
     int contador = 7;
     int calcularContador = 1;
+    AudioClip musicaTirarCarta;
     public CartasJ1View(Baraja mazo) {  
         this.mazo = mazo;
         //this.mazo.jugador1();
@@ -46,7 +48,7 @@ public class CartasJ1View extends GridPane{
         strNumJ1 = String.valueOf(numCartasPantalla.numero + " " + numCartasPantalla.palo + " = " + numCartasPantalla.puntos + " puntos");
         labelJ1 = new Label(strNumJ1);
         labelJ1.setPrefWidth(TAM_X);
-        labelJ1Vacio.setPrefWidth(TAM_X);
+        
         this.add(labelJ1, x, 0);
         
        }
@@ -59,6 +61,18 @@ public class CartasJ1View extends GridPane{
             System.out.println("X: " + mouseEvent.getX() + ", Y: "+ mouseEvent.getY() );
             colClic = (int)(mouseEvent.getX() / TAM_X);
             System.out.println("Col: " + colClic);
+            
+            //SONIDO TIRA CARTA
+        URL urlmusicaFondo = getClass().getResource("/audio/draw.wav");
+        if(urlmusicaFondo != null) {
+            try {
+                musicaTirarCarta = new AudioClip(urlmusicaFondo.toURI().toString());
+                musicaTirarCarta.play();
+            } catch (URISyntaxException ex) {
+            }            
+        } else {
+        System.out.println("No se ha encontrado el archivo de audio");
+        }
             //System.out.println(mazo.posCartaACogerJ1);
             //Carta num = mazo.cartasJ1[colClic];
             //System.out.println(num.numero + " " + num.palo + " = " + num.puntos + " puntos");

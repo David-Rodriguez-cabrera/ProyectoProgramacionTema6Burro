@@ -21,7 +21,7 @@ import javafx.scene.media.AudioClip;
  * @author 1DAW06
  */
 public class Botones {
-   int contadorPosCarta;
+   //int contadorPosCarta;
    AudioClip musicaRobarCarta;
 //Image imageOk = new Image(getClass().getResourceAsStream("baraja.png"));
 Button button = new Button("Robar");
@@ -43,8 +43,6 @@ button.setOnAction (new EventHandler <ActionEvent> () {
     @Override 
     public void handle (ActionEvent e) {
         
-        System.out.println("holaMundo");
-       
         if (mazo.cartasJ1[cartasJ1View.colClic] == null && mazo.posCartaACoger<20){
             
             //SONIDO TIRA CARTA
@@ -65,11 +63,11 @@ button.setOnAction (new EventHandler <ActionEvent> () {
        cartasJ1View.strNumJ1 = String.valueOf(cartasJ1View.numCartasPantalla.numero + " " + cartasJ1View.numCartasPantalla.palo + " = " + cartasJ1View.numCartasPantalla.puntos + " puntos");
         cartasJ1View.labelJ1 = new Label(cartasJ1View.strNumJ1);
         cartasJ1View.labelJ1.setPrefWidth(cartasJ1View.TAM_X);
-        System.out.println(contadorPosCarta);
-        contadorPosCarta= cartasJ1View.contador + cartasJ1View.calcularContador;
-        cartasJ1View.add(cartasJ1View.labelJ1, contadorPosCarta, 0);
+        //System.out.println(contadorPosCarta);
+        //contadorPosCarta= cartasJ1View.contador + cartasJ1View.calcularContador;
+        cartasJ1View.add(cartasJ1View.labelJ1, cartasJ1View.getColumnCount(), 0);
         
-            System.out.println(contadorPosCarta);
+            //System.out.println(contadorPosCarta);
         //mazo.cogerCarta();
         }else{
             System.out.println("No quedan cartas en la baraja o no puedes robar mas cartas");

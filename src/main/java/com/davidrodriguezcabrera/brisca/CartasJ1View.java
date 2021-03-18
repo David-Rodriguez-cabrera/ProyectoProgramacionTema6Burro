@@ -32,8 +32,8 @@ public class CartasJ1View extends GridPane{
     Carta numCartasPantalla;
     //HBox hboxCartaPersonajeJugador;
     int colClic;
-    int contador = 7;
-    int calcularContador = 1;
+    //int contador = 7;
+    //int calcularContador = 1;
     AudioClip musicaTirarCarta;
     public CartasJ1View(Baraja mazo) {  
         this.mazo = mazo;
@@ -81,8 +81,8 @@ public class CartasJ1View extends GridPane{
             this.getChildren().remove(colClic);
             mazo.cartasJ1[colClic] = null;
             
-            contador = contador-calcularContador;
-            System.out.println(contador);
+            //contador = contador-calcularContador;
+            //System.out.println(contador);
             //System.arraycopy(this.mazo.cartasJ1,  colClic, this.mazo.cartasJ1, colClic, 1);
             //mazo.cartasJ1.remove(colClic);
             //System.arraycopy(arrayObjetos, i + 1, objeto,i, arrayObjetos.length - 1 - i);

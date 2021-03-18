@@ -7,34 +7,32 @@ package com.davidrodriguezcabrera.brisca;
 
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
-
 /**
  *
  * @author 1DAW06
  */
 public class CartasJ2View extends GridPane{
     Baraja mazo;
+    // VARIABLE PARA PONER UN TAMAÑO X A LAS CARTAS
     final int TAM_X = 130;
+    // VARIABLE  PARA PONER UN TAMAÑO Y A LAS CARTAS
     final int TAM_Y = 40;
+    // VARIABLE STRING PARA DECIR LO QUE QUIERES MOSTRAR POR PANTALLA
     String strNumJ2;
+    // VARIABLE DEL LABEL DE J2
     Label labelJ2 = new Label();
+    // VARIABLE QUE DETERMINA EL NUMERO DE CARTAS POR PANTALLA
     Carta numCartasPantalla;
+    // VARIABLE PARA CALCULAR DONDE DAMOS CLICK CON EL RATON
     int colClic;
-    int contador = 7;
-    int calcularContador = 1;
+    // MUSICA O SONIDO AL TIRAR UNA CARTA
     AudioClip musicaTirarCarta;
     
+    // CREAR Y VER CARTAS DEL J2 POR PANTALLA
     public CartasJ2View(Baraja mazo) {  
         this.mazo = mazo;
         
@@ -47,12 +45,14 @@ public class CartasJ2View extends GridPane{
         strNumJ2 = String.valueOf(numCartasPantalla.numero + " " + numCartasPantalla.palo + " = " + numCartasPantalla.puntos + " puntos");
         labelJ2 = new Label(strNumJ2);
         labelJ2.setPrefWidth(TAM_X);
-        
+        labelJ2.setPrefHeight(TAM_Y);
         this.add(labelJ2, x, 0);
         
        }
         this.mouseController();
     }
+    
+    // METODO PARA DETECTAR PULSACIONES DEL RATO
     public void mouseController() {
         
         this.setOnMouseClicked((MouseEvent mouseEvent) -> {
@@ -75,8 +75,6 @@ public class CartasJ2View extends GridPane{
             this.getChildren().remove(colClic);
             mazo.cartasJ2[colClic] = null;
             
-            contador = contador-calcularContador;
-            System.out.println(contador);
                 
       if (mazo.cartasJ2[colClic] != null){
           for(int x=0; x<7; x++){

@@ -1,17 +1,21 @@
 package com.davidrodriguezcabrera.brisca;
 
 import java.util.Random;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Baraja {
-
+    //ARRAY BARAJA ESPAÑOLA
     Carta[] barajaEspanola = new Carta[20];
+    //ARRAY CARTAS DE J1
     Carta[] cartasJ1 = new Carta[7];
+    //ARRAY CARTAS DE J2
     Carta[] cartasJ2 = new Carta[7];
+    //VARIABLE QUE SIRVE PARA CONTAR LA SIGUIENTE CARTA QUE TIENE QUE COGER LOS JUGADOR
     int posCartaACoger;
+    //VARIABLE AYUDA A QUE LA BARAJA QUE IGUAL QUE AL MOSTRARLA
     int numCartas;
+    //VARIABLE QUE SIRVE PARA CONTAR LA SIGUIENTE CARTA QUE TIENE QUE COGER EL JUGADOR J1
     int posCartaACogerJ1;
+    //VARIABLE QUE SIRVE PARA CONTAR LA SIGUIENTE CARTA QUE TIENE QUE COGER EL JUGADOR J2
     int posCartaACogerJ2;
         
     public Baraja(){
@@ -63,6 +67,7 @@ public class Baraja {
     
     }
     
+    // METODO PARA BARAJAR CARTAS
     public void barajarCartas(){
         
         for(int x=0; x<100; x++){
@@ -74,7 +79,8 @@ public class Baraja {
         barajaEspanola[pos2] = carta1; 
     }
     }
-    //MOTRAR CARTAS POR CONSOLA
+    
+    // METODO PARA MOTRAR CARTAS POR CONSOLA
     public void mostrarBaraja(){
         for(int x=0; x<20; x++){
         System.out.println(barajaEspanola[x].numero + " " + barajaEspanola[x].palo + " = " + barajaEspanola[x].puntos + " puntos");
@@ -83,6 +89,7 @@ public class Baraja {
         System.out.println("");
     }
     
+    // METODO PARA COGER CARTA
     public Carta cogerCarta(){
         numCartas = posCartaACoger;
         Carta cartaCogida = barajaEspanola[posCartaACoger];
@@ -90,18 +97,21 @@ public class Baraja {
         return cartaCogida;
     }
     
+    // METODO PARA DEFINIR AL J1
     public void jugador1(){
         Carta cogerUnaCarta = cogerCarta();
         cartasJ1[posCartaACogerJ1] = cogerUnaCarta;
         System.out.println(cartasJ1[posCartaACogerJ1].numero + " " + cartasJ1[posCartaACogerJ1].palo + " = " + cartasJ1[posCartaACogerJ1].puntos + " puntos");
     }
     
+    // METODO PARA DEFINIR AL J2
     public void jugador2(){
         Carta cogerUnaCarta = cogerCarta();
         cartasJ2[posCartaACogerJ2] = cogerUnaCarta;
         System.out.println(cartasJ2[posCartaACogerJ2].numero + " " + cartasJ2[posCartaACogerJ2].palo + " = " + cartasJ2[posCartaACogerJ2].puntos + " puntos");
     }
    
+    // METODO PARA RETORNAR UN NUMERO RANDOM
     public int getCartaAleatoria(int min, int max) {
         Random random = new Random();
         int num = random.nextInt(max-min+1) + min;

@@ -7,32 +7,32 @@ package com.davidrodriguezcabrera.brisca;
 
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
-
 /**
  *
  * @author 1DAW06
  */
 public class CartasJ1View extends GridPane{
     Baraja mazo;
+    // VARIABLE PARA PONER UN TAMAÑO X A LAS CARTAS
     final int TAM_X = 130;
+    // VARIABLE  PARA PONER UN TAMAÑO Y A LAS CARTAS
     final int TAM_Y = 40;
+    // VARIABLE STRING PARA DECIR LO QUE QUIERES MOSTRAR POR PANTALLA
     String strNumJ1;
+    // VARIABLE DEL LABEL DE J1
     Label labelJ1 = new Label();
+    // VARIABLE QUE DETERMINA EL NUMERO DE CARTAS POR PANTALLA
     Carta numCartasPantalla;
+    // VARIABLE PARA CALCULAR DONDE DAMOS CLICK CON EL RATON
     int colClic;
+    // MUSICA O SONIDO AL TIRAR UNA CARTA
     AudioClip musicaTirarCarta;
     
+    // CREAR Y VER CARTAS DEL J1 POR PANTALLA
     public CartasJ1View(Baraja mazo) {  
         this.mazo = mazo;
        
@@ -45,13 +45,14 @@ public class CartasJ1View extends GridPane{
         strNumJ1 = String.valueOf(numCartasPantalla.numero + " " + numCartasPantalla.palo + " = " + numCartasPantalla.puntos + " puntos");
         labelJ1 = new Label(strNumJ1);
         labelJ1.setPrefWidth(TAM_X);
-        
+        labelJ1.setPrefHeight(TAM_Y);
         this.add(labelJ1, x, 0);
         
        }
         this.mouseController();
-        //this.mostrarJ1();
     }
+    
+    // METODO PARA DETECTAR PULSACIONES DEL RATON
     public void mouseController() {
         
         this.setOnMouseClicked((MouseEvent mouseEvent) -> {
@@ -71,6 +72,7 @@ public class CartasJ1View extends GridPane{
         System.out.println("No se ha encontrado el archivo de audio");
         }
            
+        
             this.getChildren().remove(colClic);
             mazo.cartasJ1[colClic] = null;
                 

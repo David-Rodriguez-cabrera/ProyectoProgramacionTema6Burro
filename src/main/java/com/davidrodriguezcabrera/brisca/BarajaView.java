@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 
 public class BarajaView extends GridPane {
     
+    // METODO CONSTRUCTOR PARA MOSTRAR LA BARAJA COMPLETA POR PANTALLA
     public BarajaView(Baraja mazo) {  
        for(int y=0; y<1; y++){
         for(int x=0; x<10; x++){

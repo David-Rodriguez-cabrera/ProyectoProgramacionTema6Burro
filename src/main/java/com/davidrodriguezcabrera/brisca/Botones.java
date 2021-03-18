@@ -9,11 +9,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 
 /**
@@ -21,19 +18,25 @@ import javafx.scene.media.AudioClip;
  * @author 1DAW06
  */
 public class Botones {
+    // MUSICA AL ROBAR CARTA
     AudioClip musicaRobarCarta;
+    // BOTON PARA ROBAR
     Button button = new Button("Robar");
 
+    //DEFINIR UN BOTON
     public Botones(Baraja mazo, CartasJ1View cartasJ1View){
         button.setScaleX(2);
         button.setScaleY(2);
         button.setTranslateX(-100);
         button.setTranslateY(300);
 
+        // CREAR UNA ACCION AL PULSAR EL BOTON
 button.setOnAction (new EventHandler <ActionEvent> () { 
     @Override 
+    // METODO PARA LA ACCION AL PULSAR EL BOTON
     public void handle (ActionEvent e) {
         
+        // SI J1 TIENE MENOS DE 7 CARTAS Y QUEDAN CARTAS EN EL MAZO
         if (mazo.cartasJ1[cartasJ1View.colClic] == null && mazo.posCartaACoger<20){
             
             //SONIDO TIRA CARTA
@@ -48,9 +51,10 @@ button.setOnAction (new EventHandler <ActionEvent> () {
         System.out.println("No se ha encontrado el archivo de audio");
         }
         
+        
         cartasJ1View.numCartasPantalla = mazo.cogerCarta();
-        System.out.println(mazo.posCartaACoger);
         mazo.cartasJ1[cartasJ1View.colClic] = cartasJ1View.numCartasPantalla;
+        System.out.println(mazo.posCartaACoger);
         cartasJ1View.strNumJ1 = String.valueOf(cartasJ1View.numCartasPantalla.numero + " " + cartasJ1View.numCartasPantalla.palo + " = " + cartasJ1View.numCartasPantalla.puntos + " puntos");
         cartasJ1View.labelJ1 = new Label(cartasJ1View.strNumJ1);
         cartasJ1View.labelJ1.setPrefWidth(cartasJ1View.TAM_X);

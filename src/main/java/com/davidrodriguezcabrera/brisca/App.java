@@ -14,8 +14,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
@@ -23,61 +21,44 @@ import javafx.scene.paint.Color;
  * JavaFX App
  */
 public class App extends Application {
+    //TIPO DE PANEL
 BorderPane paneRoot = new BorderPane();
-BorderPane borderPane = new BorderPane();
+    //MUSICA FONDO
 AudioClip musicaFondo;
-//HBox pane1 = new HBox();
-//HBox pane2 = new HBox();
-//StackPane pane3 = new StackPane();
-//StackPane pane4 = new StackPane();
-//StackPane pane5 = new StackPane();
 
         
     @Override
     public void start(Stage stage) {
-        //Pane paneRoot = new Pane();
-        //var scene = new Scene(paneRoot, 640, 480);
-        //stage.setScene(scene);
-        //stage.show();
-        
-                
+        //ESCENA
         var scene = new Scene(paneRoot, 900, 600);
         stage.setScene(scene);
         stage.show();
-        
-       paneRoot.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        //this.rellenarPaneles();
-        
+        //FONDO ESCENA
+        paneRoot.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+        //TITULO ESCENA
         stage.setTitle("Burro");
-        //rellenarBorderPane();
-       
-        Baraja mazo = new Baraja();
-        //GridPane barajaGridPane = new GridPane();
         
-        //Label label = new Label("5");
-        //barajaView.add(label, 0, 0);
+        //INICIR OBJETO BARAJA CON EL NOMBRE MAZO
+        Baraja mazo = new Baraja();
+        //BARAJAR CARTAS
         mazo.barajarCartas();
+        //MOSTRAR BARAJA ENTERA
         mazo.mostrarBaraja();
-        //mazo.jugador1();
-        //BarajaView barajaView = new BarajaView(mazo);
-        //paneRoot.setCenter(barajaView);
+     
+        //INICIR OBJETO CartasJ1View CON EL NOMBRE cartasJ1View 
         CartasJ1View cartasJ1View = new CartasJ1View(mazo);
+        //PONER LAS CARTAS DE J1 ABAJO DE LA ESCENA
         paneRoot.setBottom(cartasJ1View);
-        //mazo.mostrarJ1();
+        
+        //INICIR OBJETO CartasJ2View CON EL NOMBRE cartasJ2View 
         CartasJ2View cartasJ2View = new CartasJ2View(mazo);
+        //PONER LAS CARTAS DE J2 ARRIBA DE LA ESCENA
         paneRoot.setTop(cartasJ2View);
         
+        //INICIR OBJETO Botones CON EL NOMBRE botones PARA ROBAR CARTAS
         Botones botones = new Botones(mazo, cartasJ1View);
+        //PONER BOTON PARA ROBAR CARTAS A LA DERECHA DE LA ESCENA
         paneRoot.setRight(botones.button);
-        
-        //mazo.jugador2();
-        //mazo.jugador2();
-        //mazo.cogerCarta();
-        //mazo.cogerCarta();
-        //mazo.cogerCarta();
-        
-        
         
         //SONIDO FONDO JUEGO
         URL urlmusicaFondo = getClass().getResource("/audio/MusicaFondo.mp3");
@@ -91,52 +72,9 @@ AudioClip musicaFondo;
         System.out.println("No se ha encontrado el archivo de audio");
         }
         
-        //paneRoot.setCenter(fondoView);
-    }
-    
-    /*public void mostrarNum(int barajaEspanola) {
-        if(barajaEspanola != -1) {
-            System.out.println(barajaEspanola);
-        } else {
-            System.out.println("La posición es incorrecta");
-        }
-    }*/
-                    
-    
-     public void rellenarPaneles() {
-            
-        //pane1.setStyle("-fx-border-color: red; -fx-border-insets: 2px; -fx-border-width:2px");
-        //pane1.getChildren().add(new Label("Zona 1"));
-        
-        //pane2.setStyle("-fx-border-color: green; -fx-border-insets: 2px; -fx-border-width:2px");
-        //pane2.getChildren().add(new Label("Zona 2"));
-
-        //pane3.setStyle("-fx-border-color: blue; -fx-border-insets: 2px; -fx-border-width:2px");
-        //pane3.getChildren().add(new Label("Zona 3"));
-        
-        //pane4.setStyle("-fx-border-color: orange; -fx-border-insets: 2px; -fx-border-width:2px");
-        //pane4.getChildren().add(new Label("Zona 4"));
-        
-        //pane5.setStyle("-fx-border-color: purple; -fx-border-insets: 2px; -fx-border-width:2px");
-        //pane5.getChildren().add(new Label("Zona 5"));
         
     }
-    public void rellenarBorderPane() {
-        /*borderPane.setCenter(pane1);
-        borderPane.setTop(pane2);
-        borderPane.setRight(pane3);
-        borderPane.setBottom(pane4);*/
-        //borderPane.setLeft(pane5);        
-        //paneRoot.getChildren().clear();
-        //paneRoot.setCenter(pane1);
-        //paneRoot.setTop(pane2);
-        //paneRoot.setRight(pane3);
-        //paneRoot.setBottom(pane4);
-        
-    }
-        
     
-
     public static void main(String[] args) {
         launch();
     }

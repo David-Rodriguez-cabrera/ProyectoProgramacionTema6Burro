@@ -21,24 +21,15 @@ import javafx.scene.media.AudioClip;
  * @author 1DAW06
  */
 public class Botones {
-   //int contadorPosCarta;
-   AudioClip musicaRobarCarta;
-//Image imageOk = new Image(getClass().getResourceAsStream("baraja.png"));
-Button button = new Button("Robar");
-    //Button button = new Button("Robar", new ImageView(imageOk));
+    AudioClip musicaRobarCarta;
+    Button button = new Button("Robar");
+
     public Botones(Baraja mazo, CartasJ1View cartasJ1View){
-        //this.cartasJ1View = cartasJ1View;
         button.setScaleX(2);
         button.setScaleY(2);
-        //button.setAlignment(Pos.BOTTOM_CENTER);
         button.setTranslateX(-100);
         button.setTranslateY(300);
-//A button with an empty text caption.
-//Button button1 = new Button();
-//A button with the specified text caption.
-//Button button2 = new Button("Accept");
-//A button with the specified text caption and icon.
-//this.botonesController();
+
 button.setOnAction (new EventHandler <ActionEvent> () { 
     @Override 
     public void handle (ActionEvent e) {
@@ -57,19 +48,15 @@ button.setOnAction (new EventHandler <ActionEvent> () {
         System.out.println("No se ha encontrado el archivo de audio");
         }
         
-            cartasJ1View.numCartasPantalla = mazo.cogerCarta();
-            System.out.println(mazo.posCartaACoger);
+        cartasJ1View.numCartasPantalla = mazo.cogerCarta();
+        System.out.println(mazo.posCartaACoger);
         mazo.cartasJ1[cartasJ1View.colClic] = cartasJ1View.numCartasPantalla;
-       cartasJ1View.strNumJ1 = String.valueOf(cartasJ1View.numCartasPantalla.numero + " " + cartasJ1View.numCartasPantalla.palo + " = " + cartasJ1View.numCartasPantalla.puntos + " puntos");
+        cartasJ1View.strNumJ1 = String.valueOf(cartasJ1View.numCartasPantalla.numero + " " + cartasJ1View.numCartasPantalla.palo + " = " + cartasJ1View.numCartasPantalla.puntos + " puntos");
         cartasJ1View.labelJ1 = new Label(cartasJ1View.strNumJ1);
         cartasJ1View.labelJ1.setPrefWidth(cartasJ1View.TAM_X);
-        //System.out.println(contadorPosCarta);
-        //contadorPosCarta= cartasJ1View.contador + cartasJ1View.calcularContador;
         cartasJ1View.add(cartasJ1View.labelJ1, cartasJ1View.getColumnCount(), 0);
         
-            //System.out.println(contadorPosCarta);
-        //mazo.cogerCarta();
-        }else{
+        } else {
             System.out.println("No quedan cartas en la baraja o no puedes robar mas cartas");
         }
         

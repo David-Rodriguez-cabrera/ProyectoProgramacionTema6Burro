@@ -13,15 +13,12 @@ public class Baraja {
     int numCartas;
     int posCartaACogerJ1;
     int posCartaACogerJ2;
-        //Image asEspadas = new Image(getClass().getResourceAsStream("/images/as_espadas.jpg"));
-        //ImageView asEspadasView = new ImageView(asEspadas);
         
     public Baraja(){
         //ESPADAS   
 
     barajaEspanola[0] = new Carta(1, "Espada", 11);
-    //barajaEspanola[0].imagen=(asEspadasView);
-   //paneRoot.getChildren().add(asEspadasView);
+    
     barajaEspanola[1] = new Carta(3, "Espada", 10);
    
     barajaEspanola[2] = new Carta(10, "Espada", 2);
@@ -88,69 +85,23 @@ public class Baraja {
     
     public Carta cogerCarta(){
         numCartas = posCartaACoger;
-        //System.out.println(posCartaACoger);
         Carta cartaCogida = barajaEspanola[posCartaACoger];
         posCartaACoger += 1;
-        
-        //System.out.println(numCartas);
         return cartaCogida;
-        
-        //System.out.println(barajaEspanola[numCartas].numero + " " + barajaEspanola[numCartas].palo + " = " + barajaEspanola[numCartas].puntos + " puntos");
     }
     
     public void jugador1(){
-        
-        
-        //Carta cogerUnaCarta;
         Carta cogerUnaCarta = cogerCarta();
-        //cogerCarta();
-        
         cartasJ1[posCartaACogerJ1] = cogerUnaCarta;
-        //Carta cartaCogidaJ1 = cartasJ1[posCartaACoger];
-        
-        //System.out.println(barajaEspanola[numCartas].numero + " " + barajaEspanola[numCartas].palo + " = " + barajaEspanola[numCartas].puntos + " puntos");
-         System.out.println(cartasJ1[posCartaACogerJ1].numero + " " + cartasJ1[posCartaACogerJ1].palo + " = " + cartasJ1[posCartaACogerJ1].puntos + " puntos");
-         
-         //return cogerUnaCarta;
+        System.out.println(cartasJ1[posCartaACogerJ1].numero + " " + cartasJ1[posCartaACogerJ1].palo + " = " + cartasJ1[posCartaACogerJ1].puntos + " puntos");
     }
     
-   /*public void mostrarJ1(){
-        for(int x=0; x<7; x++){
-        System.out.println("");
-   System.out.println(cartasJ1[posCartaACogerJ1].numero + " " + cartasJ1[posCartaACogerJ1].palo + " = " + cartasJ1[posCartaACogerJ1].puntos + " puntos");
-               }
-    }*/
     public void jugador2(){
-        
-        //Carta cogerUnaCarta;
         Carta cogerUnaCarta = cogerCarta();
-        //cogerCarta();
-        
         cartasJ2[posCartaACogerJ2] = cogerUnaCarta;
-        //Carta cartaCogidaJ1 = cartasJ1[posCartaACoger];
-        
-        //System.out.println(barajaEspanola[numCartas].numero + " " + barajaEspanola[numCartas].palo + " = " + barajaEspanola[numCartas].puntos + " puntos");
-         System.out.println(cartasJ2[posCartaACogerJ2].numero + " " + cartasJ2[posCartaACogerJ2].palo + " = " + cartasJ2[posCartaACogerJ2].puntos + " puntos");
-        
+        System.out.println(cartasJ2[posCartaACogerJ2].numero + " " + cartasJ2[posCartaACogerJ2].palo + " = " + cartasJ2[posCartaACogerJ2].puntos + " puntos");
     }
-    
-    /*public Carta posCartas(int posx){
-        //numCartas = posx;
-        //try {            
-        
-         Carta cartaCogidaPantalla = cogerCarta();
-        //cogerCarta();
-        
-        barajaEspanola[posx] = cartaCogidaPantalla;
-        //System.out.println(barajaEspanola[posx].numero + " " + barajaEspanola[posx].palo + " = " + barajaEspanola[posx].puntos + " largarto");
-            return cartaCogidaPantalla;
-        //} //catch(Exception ex) {
-            //System.out.println(ex.getMessage());
-            //return -1;
-        //}
-    }*/
-    
-    
+   
     public int getCartaAleatoria(int min, int max) {
         Random random = new Random();
         int num = random.nextInt(max-min+1) + min;

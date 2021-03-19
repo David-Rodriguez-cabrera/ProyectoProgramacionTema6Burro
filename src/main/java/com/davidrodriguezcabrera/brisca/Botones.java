@@ -22,7 +22,6 @@ public class Botones {
     AudioClip musicaRobarCarta;
     // BOTON PARA ROBAR
     Button button = new Button("Robar");
-
     //DEFINIR UN BOTON
     public Botones(Baraja mazo, CartasJ1View cartasJ1View){
         button.setScaleX(2);
@@ -37,7 +36,7 @@ button.setOnAction (new EventHandler <ActionEvent> () {
     public void handle (ActionEvent e) {
         
         // SI J1 TIENE MENOS DE 7 CARTAS Y QUEDAN CARTAS EN EL MAZO
-        if (mazo.cartasJ1[cartasJ1View.colClic] == null && mazo.posCartaACoger<20){
+        if (cartasJ1View.num == null && mazo.posCartaACoger<20 && cartasJ1View.contadorArray<6){
             
             //SONIDO TIRA CARTA
         URL urlmusicaFondo = getClass().getResource("/audio/cuckoo.wav");
@@ -51,17 +50,25 @@ button.setOnAction (new EventHandler <ActionEvent> () {
         System.out.println("No se ha encontrado el archivo de audio");
         }
         
-        
+        cartasJ1View.contadorArray= cartasJ1View.contadorArray +1;
+        cartasJ1View.contador= cartasJ1View.contador +1;
         cartasJ1View.numCartasPantalla = mazo.cogerCarta();
         mazo.cartasJ1[cartasJ1View.colClic] = cartasJ1View.numCartasPantalla;
         System.out.println(mazo.posCartaACoger);
         cartasJ1View.strNumJ1 = String.valueOf(cartasJ1View.numCartasPantalla.numero + " " + cartasJ1View.numCartasPantalla.palo + " = " + cartasJ1View.numCartasPantalla.puntos + " puntos");
         cartasJ1View.labelJ1 = new Label(cartasJ1View.strNumJ1);
         cartasJ1View.labelJ1.setPrefWidth(cartasJ1View.TAM_X);
-        cartasJ1View.add(cartasJ1View.labelJ1, cartasJ1View.getColumnCount(), 0);
+        
+        cartasJ1View.add(cartasJ1View.labelJ1, cartasJ1View.contador, 0);
+            System.out.println(cartasJ1View.contadorArray+"   hola");
+            //System.out.println(cartasJ1View.getColumnCount()+"  hola");
         
         } else {
             System.out.println("No quedan cartas en la baraja o no puedes robar mas cartas");
+            for(int x=0; x<7; x++){
+            System.out.println("");
+            System.out.print(mazo.cartasJ1[x].numero + " " + mazo.cartasJ1[x].palo + " = " + mazo.cartasJ1[x].puntos + " puntos");
+            }
         }
         
     }

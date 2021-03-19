@@ -9,8 +9,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 /**
  *
  * @author 1DAW06
@@ -32,6 +34,9 @@ public class CartasJ1View extends GridPane{
     // MUSICA O SONIDO AL TIRAR UNA CARTA
     AudioClip musicaTirarCarta;
     
+    int contador = 6;
+    int contadorArray = 6;
+    Carta num;
     // CREAR Y VER CARTAS DEL J1 POR PANTALLA
     public CartasJ1View(Baraja mazo) {  
         this.mazo = mazo;
@@ -46,6 +51,9 @@ public class CartasJ1View extends GridPane{
         labelJ1 = new Label(strNumJ1);
         labelJ1.setPrefWidth(TAM_X);
         labelJ1.setPrefHeight(TAM_Y);
+        
+        
+        
         this.add(labelJ1, x, 0);
         
        }
@@ -72,10 +80,14 @@ public class CartasJ1View extends GridPane{
         System.out.println("No se ha encontrado el archivo de audio");
         }
            
-        
+        System.out.println(mazo.cartasJ1[colClic].numero + mazo.cartasJ1[colClic].palo);
             this.getChildren().remove(colClic);
+           
             mazo.cartasJ1[colClic] = null;
-                
+            //num = mazo.cartasJ1[colClic];
+             //contador = contador-1;
+            contadorArray = contadorArray -1;
+            
       if (mazo.cartasJ1[colClic] != null){
           for(int x=0; x<7; x++){
             System.out.println("");

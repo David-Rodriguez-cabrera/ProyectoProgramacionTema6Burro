@@ -17,7 +17,13 @@ public class Baraja {
     int posCartaACogerJ1;
     //VARIABLE QUE SIRVE PARA CONTAR LA SIGUIENTE CARTA QUE TIENE QUE COGER EL JUGADOR J2
     int posCartaACogerJ2;
-        
+    
+    Carta carta1;
+    Carta carta2;
+    Carta cartaCogida;
+    int pos1;
+    int pos2;  
+     
     public Baraja(){
         //ESPADAS   
 
@@ -71,10 +77,10 @@ public class Baraja {
     public void barajarCartas(){
         
         for(int x=0; x<100; x++){
-        int pos1 = getCartaAleatoria(0, 19);
-        int pos2 = getCartaAleatoria(0, 19);
-        Carta carta1 = barajaEspanola[pos1];
-        Carta carta2 = barajaEspanola[pos2];
+        pos1 = getCartaAleatoria(0, 19);
+        pos2 = getCartaAleatoria(0, 19);
+        carta1 = barajaEspanola[pos1];
+        carta2 = barajaEspanola[pos2];
         barajaEspanola[pos1] = carta2;
         barajaEspanola[pos2] = carta1; 
     }
@@ -92,7 +98,7 @@ public class Baraja {
     // METODO PARA COGER CARTA
     public Carta cogerCarta(){
         numCartas = posCartaACoger;
-        Carta cartaCogida = barajaEspanola[posCartaACoger];
+        cartaCogida = barajaEspanola[posCartaACoger];
         posCartaACoger += 1;
         return cartaCogida;
     }

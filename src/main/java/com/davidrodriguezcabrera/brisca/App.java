@@ -6,6 +6,8 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.stage.Stage;
@@ -57,6 +59,8 @@ AudioClip musicaFondo;
         //PONER BOTON PARA ROBAR CARTAS A LA DERECHA DE LA ESCENA
         paneRoot.setRight(botones.button);
         
+        //Reinicio reinicio = new Reinicio(mazo, cartasJ1View, cartasJ2View, botones);
+        
         //SONIDO FONDO JUEGO
         URL urlmusicaFondo = getClass().getResource("/audio/MusicaFondo.mp3");
         if(urlmusicaFondo != null) {
@@ -68,8 +72,40 @@ AudioClip musicaFondo;
         } else {
         System.out.println("No se ha encontrado el archivo de audio");
         }
+        //DEFINIR CONTROLES
+        scene.setOnKeyPressed((KeyEvent event) -> {
+            switch(event.getCode()){
+                case T:
+                  
+               Reinicio(mazo, cartasJ1View,cartasJ2View,botones);
+            //musicaFondo.play();
+                    System.out.println("reseteado");
+            
+                break;
+            }
+        });
+
+        scene.setOnKeyReleased((KeyEvent event) -> {
+            
+        });
         
-        
+    }
+   
+    public void Reinicio(Baraja mazo, CartasJ1View cartasJ1View, CartasJ2View cartasJ2View, Botones botones){
+    
+    mazo.barajarCartas();
+   
+    mazo.mostrarBaraja();
+     mazo.cogerCarta();
+     mazo.jugador1();
+     mazo.jugador2();
+    
+    cartasJ1View.contador = 6;
+    cartasJ1View.contadorArray = 6;
+    musicaFondo.stop();
+    musicaFondo.play();
+    
+    
     }
     
     public static void main(String[] args) {
